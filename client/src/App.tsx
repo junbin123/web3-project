@@ -1,22 +1,25 @@
 import './App.css'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import ConnectButton from './components/ConnectButton'
+import TransactionForm from './components/TransactionForm'
+
 function App() {
+  const theme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  })
   const style = {
-    wrapper: `h-screen max-h-screen h-min-screen w-screen bg-[#2D242F] text-white select-none flex flex-col justify-between`,
+    wrapper: `h-screen max-h-screen h-min-screen w-screen bg-[#001B35] text-white select-none flex flex-col items-center pt-10`,
   }
   return (
-    <div className={style.wrapper}>
-      {/* <h1>hello</h1>
-      <h2>hello world</h2>
-      <p>sdgljfasd</p>
-      <div>sdgljfasd</div>
-      <a className='button' href='#'>
-        Anchor button
-      </a>
-      <button>Button element</button>
-      <input type='submit' value='submit input' />
-      <input type='button' value='button input' /> */}
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className={style.wrapper}>
+        <ConnectButton />
+        <div className='pt-10'></div>
+        <TransactionForm />
+      </div>
+    </ThemeProvider>
   )
 }
-
 export default App
