@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 
 function TransactionForm() {
   return (
-    <div className='w-[30rem] max-w-1/3 rounded-md bg-[#111625] p-3 border border-slate-500'>
+    <div className='w-[30rem] rounded-md bg-[#111625] p-3 border border-slate-500'>
       <div className='pb-2 text-lg'>Swap</div>
       <Stack spacing={2}>
         <Autocomplete
