@@ -21,7 +21,7 @@ function ConnectButton() {
         </div>
       ) : (
         <Button variant='contained' size='large' onClick={() => connectWallet()}>
-          Connect Wallet
+          <span className='normal-case'>Connect Wallet</span>
         </Button>
       )}
     </Stack>
