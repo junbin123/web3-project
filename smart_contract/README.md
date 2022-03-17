@@ -12,4 +12,12 @@ npx hardhat test
 npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
+
+# 编译
+npx hardhat compile
+
+# 部署到ropsten网络
+npx hardhat run script/deploy.js --network ropsten
 ```
+
+
