@@ -9,4 +9,5 @@ export interface TransactionContextType {
   isLoading: boolean
   formData: FormDataType
   setFormData: (data: FormDataType) => void
+  transactionList: any[]
 }

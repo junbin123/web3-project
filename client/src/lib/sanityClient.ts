@@ -35,7 +35,7 @@ export const saveTransaction = async (transactionInfo: any) => {
 
 // 获取最近20条交易信息
 export const getTransaction = async () => {
-  const query = `*[_type == "transactions"] | order(timestamp){
+  const query = `*[_type == "transactions"] | order(timestamp desc){
     txHash,fromAddress,toAddress,amount,timestamp
   }[0...20]`
   const res = await client.fetch(query)

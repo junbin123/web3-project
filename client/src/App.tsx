@@ -2,6 +2,7 @@ import './App.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import ConnectButton from './components/ConnectButton'
 import TransactionForm from './components/TransactionForm'
+import TransactionTable from './components/TransactionTable'
 import { TransactionProvider } from './context/TransactionContext'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <ConnectButton />
           <div className='pt-10'></div>
           <TransactionForm />
+          <TransactionTable />
         </div>
       </TransactionProvider>
     </ThemeProvider>
