@@ -19,7 +19,7 @@ export const saveTransaction = async (transactionInfo: any) => {
     txHash,
     amount: parseFloat(amount),
   }
-  const res = await client.createIfNotExists(txDoc)
+  const res = await client.create(txDoc)
   //   amount: 0.1
   // fromAddress: "0xe21b2d4218c67efc544a893c824e289eec467fd5"
   // timestamp: "2022-03-18T05:06:17.916Z"
