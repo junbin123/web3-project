@@ -12,7 +12,7 @@ function App() {
     },
   })
   const style = {
-    wrapper: `h-screen max-h-screen h-min-screen bg-[#001B35] text-white select-none flex flex-col items-center`,
+    wrapper: `h-screen max-h-screen h-min-screen bg-[#001B35] text-white select-none flex flex-col items-center pb-7`,
   }
   return (
     <ThemeProvider theme={theme}>

@@ -17,38 +17,40 @@ export default function DenseTable() {
   const { transactionList } = useContext(TransactionContext)
 
   return (
-    <TableContainer component={Paper} className='max-w-3xl mt-10'>
-      <Table size='small'>
-        <TableHead>
-          <TableRow>
-            <TableCell>Transaction Hash</TableCell>
-            <TableCell align='right'>FromAddress</TableCell>
-            <TableCell align='right'>ToAddress</TableCell>
-            <TableCell align='right'>Amount</TableCell>
-            <TableCell align='right'>Timestamp</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {transactionList.map((row) => (
-            <TableRow key={row.txHash}>
-              <TableCell component='th' scope='row'>
-                <Link
-                  underline='hover'
-                  href={`https://ropsten.etherscan.io/tx/${row.txHash}`}
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  {sliceStr(row.txHash)}
-                </Link>
-              </TableCell>
-              <TableCell align='right'>{sliceStr(row.fromAddress)} </TableCell>
-              <TableCell align='right'>{sliceStr(row.toAddress)}</TableCell>
-              <TableCell align='right'>{row.amount}</TableCell>
-              <TableCell align='right'>{row.timestamp}</TableCell>
+    <div className='w-30 mt-10 max-w-full'>
+      <TableContainer component={Paper}>
+        <Table size='small'>
+          <TableHead>
+            <TableRow>
+              <TableCell>Transaction Hash</TableCell>
+              <TableCell align='right'>FromAddress</TableCell>
+              <TableCell align='right'>ToAddress</TableCell>
+              <TableCell align='right'>Amount</TableCell>
+              <TableCell align='right'>Timestamp</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {transactionList.map((row) => (
+              <TableRow key={row.txHash}>
+                <TableCell component='th' scope='row'>
+                  <Link
+                    underline='hover'
+                    href={`https://ropsten.etherscan.io/tx/${row.txHash}`}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {sliceStr(row.txHash)}
+                  </Link>
+                </TableCell>
+                <TableCell align='right'>{sliceStr(row.fromAddress)} </TableCell>
+                <TableCell align='right'>{sliceStr(row.toAddress)}</TableCell>
+                <TableCell align='right'>{row.amount}</TableCell>
+                <TableCell align='right'>{row.timestamp}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   )
 }

@@ -27,7 +27,7 @@ function TransactionForm() {
     sendTransaction()
   }
   return (
-    <div className='w-[30rem] rounded-md bg-[#111625] p-3 border border-slate-500'>
+    <div className='w-[30rem] max-w-full rounded-md bg-[#111625] p-3 border border-slate-500'>
       <div className='pb-2 text-lg'>Swap</div>
       <Stack spacing={2}>
         <Autocomplete
