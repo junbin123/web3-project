@@ -2,6 +2,7 @@ import './App.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import ConnectButton from './components/ConnectButton'
 import TransactionForm from './components/TransactionForm'
+import { TransactionProvider } from './context/TransactionContext'
 
 function App() {
   const theme = createTheme({
@@ -10,15 +11,18 @@ function App() {
     },
   })
   const style = {
-    wrapper: `h-screen max-h-screen h-min-screen w-screen bg-[#001B35] text-white select-none flex flex-col items-center pt-10`,
+    wrapper: `h-screen max-h-screen h-min-screen bg-[#001B35] text-white select-none flex flex-col items-center`,
   }
   return (
     <ThemeProvider theme={theme}>
-      <div className={style.wrapper}>
-        <ConnectButton />
-        <div className='pt-10'></div>
-        <TransactionForm />
-      </div>
+      <TransactionProvider>
+        <div className={style.wrapper}>
+          <div className='pt-10'></div>
+          <ConnectButton />
+          <div className='pt-10'></div>
+          <TransactionForm />
+        </div>
+      </TransactionProvider>
     </ThemeProvider>
   )
 }
