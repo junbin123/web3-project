@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import type { TransactionContextType } from '../types'
+import type { TransactionContextType, ChainIdType } from '../types'
 import { contractABI, contractAddress } from '../lib/constants'
 import { ethers } from 'ethers'
 import { Snackbar, Alert, Link } from '@mui/material'
 import { saveTransaction, getTransaction } from '../lib/sanityClient'
+const chainIdDict = {
+  '0x1': 'Mainnet',
+  '0x5': 'Goeril',
+  '0x2a': 'Kovan',
+  '0x4': 'Rinkeby',
+  '0x3': 'Ropsten',
+}
 
 export const TransactionContext = React.createContext({} as TransactionContextType)
 const { ethereum }: any = window
+let chainName = ''
 
 // 获取合约信息
 const getEthereumContract = () => {
@@ -28,6 +36,10 @@ export const TransactionProvider = ({ children }: any) => {
   async function sendTransaction() {
     if (!currentAccount) {
       return alert('Please connect your wallet')
+    }
+    const chainId = await ethereum.request({ method: 'eth_chainId' })
+    if (chainId !== '0x3') {
+      return alert('Please switch to Ropsten network')
     }
     setIsLoading(true)
     const { addressTo, amount } = formData
@@ -84,7 +96,11 @@ export const TransactionProvider = ({ children }: any) => {
     ethereum
       .request({ method: 'eth_accounts' })
       .then((accounts: string[]) => {
+        console.log(accounts, '=============')
         setCurrentAccount(accounts[0])
+        ethereum.request({ method: 'eth_chainId' }).then((res: ChainIdType) => {
+          chainName = chainIdDict[res]
+        })
       })
       .catch(() => {
         throw new Error('No ethereum object.')
@@ -121,6 +137,7 @@ export const TransactionProvider = ({ children }: any) => {
         formData,
         setFormData,
         transactionList,
+        chainName,
       }}
     >
       <Snackbar open={showToast} autoHideDuration={6000} onClose={() => setShowToast(false)}>

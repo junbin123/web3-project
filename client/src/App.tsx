@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import ConnectButton from './components/ConnectButton'
 import TransactionForm from './components/TransactionForm'
 import TransactionTable from './components/TransactionTable'
+import Footer from './components/Footer'
 import { TransactionProvider } from './context/TransactionContext'
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     },
   })
   const style = {
-    wrapper: `h-screen max-h-screen h-min-screen bg-[#001B35] text-white select-none flex flex-col items-center pb-7`,
+    wrapper: `min-h-screen h-min-screen bg-[#001B35] text-white select-none flex flex-col items-center pb-7`,
   }
   return (
     <ThemeProvider theme={theme}>
@@ -25,6 +26,7 @@ function App() {
           <TransactionTable />
         </div>
       </TransactionProvider>
+      <Footer />
     </ThemeProvider>
   )
 }
